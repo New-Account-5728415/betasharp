@@ -55,7 +55,7 @@ public class Block
     public static readonly Block LapisBlock = new Block(22, 144, Material.Stone).setHardness(3.0F).setResistance(5.0F).setSoundGroup(SoundStoneFootstep).setBlockName("blockLapis");
     public static readonly Block Dispenser = new BlockDispenser(23).setHardness(3.5F).setSoundGroup(SoundStoneFootstep).setBlockName("dispenser").ignoreMetaUpdates();
     public static readonly Block Sandstone = new BlockSandStone(24).setSoundGroup(SoundStoneFootstep).setHardness(0.8F).setBlockName("sandStone");
-    public static readonly Block Noteblock = new BlockNote(25).setHardness(0.8F).setBlockName("musicBlock").ignoreMetaUpdates();
+    public static readonly Block Noteblock = new BlockNote(25).setHardness(0.8F).setSoundGroup(SoundWoodFootstep).setBlockName("musicBlock").ignoreMetaUpdates();
     public static readonly Block Bed = new BlockBed(26).setHardness(0.2F).setBlockName("bed").disableStats().ignoreMetaUpdates();
     public static readonly Block PoweredRail = new BlockRail(27, 179, true).setHardness(0.7F).setSoundGroup(SoundMetalFootstep).setBlockName("goldenRail").ignoreMetaUpdates();
     public static readonly Block DetectorRail = new BlockDetectorRail(28, 195).setHardness(0.7F).setSoundGroup(SoundMetalFootstep).setBlockName("detectorRail").ignoreMetaUpdates();
@@ -114,7 +114,7 @@ public class Block
     public static readonly Block Cactus = new BlockCactus(81, 70).setHardness(0.4F).setSoundGroup(SoundClothFootstep).setBlockName("cactus");
     public static readonly Block Clay = new BlockClay(82, 72).setHardness(0.6F).setSoundGroup(SoundGravelFootstep).setBlockName("clay");
     public static readonly Block SugarCane = new BlockReed(83, 73).setHardness(0.0F).setSoundGroup(SoundGrassFootstep).setBlockName("reeds").disableStats();
-    public static readonly Block Jukebox = new BlockJukeBox(84, 74).setHardness(2.0F).setResistance(10.0F).setSoundGroup(SoundStoneFootstep).setBlockName("jukebox").ignoreMetaUpdates();
+    public static readonly Block Jukebox = new BlockJukeBox(84, 74).setHardness(2.0F).setResistance(10.0F).setSoundGroup(SoundWoodFootstep).setBlockName("jukebox").ignoreMetaUpdates();
     public static readonly Block Fence = new BlockFence(85, 4).setHardness(2.0F).setResistance(5.0F).setSoundGroup(SoundWoodFootstep).setBlockName("fence").ignoreMetaUpdates();
     public static readonly Block Pumpkin = new BlockPumpkin(86, 102, false).setHardness(1.0F).setSoundGroup(SoundWoodFootstep).setBlockName("pumpkin").ignoreMetaUpdates();
     public static readonly Block Netherrack = new BlockNetherrack(87, 103).setHardness(0.4F).setSoundGroup(SoundStoneFootstep).setBlockName("hellrock");
