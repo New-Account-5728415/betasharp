@@ -123,8 +123,8 @@ public class Block
     public static readonly BlockPortal NetherPortal = (BlockPortal)new BlockPortal(90, 14).setHardness(-1.0F).setSoundGroup(SoundGlassFootstep).setLuminance(12.0F / 16.0F).setBlockName("portal");
     public static readonly Block JackLantern = new BlockPumpkin(91, 102, true).setHardness(1.0F).setSoundGroup(SoundWoodFootstep).setLuminance(1.0F).setBlockName("litpumpkin").ignoreMetaUpdates();
     public static readonly Block Cake = new BlockCake(92, 121).setHardness(0.5F).setSoundGroup(SoundClothFootstep).setBlockName("cake").disableStats().ignoreMetaUpdates();
-    public static readonly Block Repeater = new BlockRedstoneRepeater(93, false).setHardness(0.0F).setSoundGroup(SoundWoodFootstep).setBlockName("diode").disableStats().ignoreMetaUpdates();
-    public static readonly Block PoweredRepeater = new BlockRedstoneRepeater(94, true).setHardness(0.0F).setLuminance(10.0F / 16.0F).setSoundGroup(SoundWoodFootstep).setBlockName("diode").disableStats().ignoreMetaUpdates();
+    public static readonly Block Repeater = new BlockRedstoneRepeater(93, false).setHardness(0.0F).setSoundGroup(SoundStoneFootstep).setBlockName("diode").disableStats().ignoreMetaUpdates();
+    public static readonly Block PoweredRepeater = new BlockRedstoneRepeater(94, true).setHardness(0.0F).setLuminance(10.0F / 16.0F).setSoundGroup(SoundStoneFootstep).setBlockName("diode").disableStats().ignoreMetaUpdates();
     public static readonly Block Trapdoor = new BlockTrapDoor(96, Material.Wood).setHardness(3.0F).setSoundGroup(SoundWoodFootstep).setBlockName("trapdoor").disableStats().ignoreMetaUpdates();
     public int textureId;
     public readonly int id;
