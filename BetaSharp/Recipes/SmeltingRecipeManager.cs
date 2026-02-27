@@ -25,6 +25,7 @@ public class SmeltingRecipeManager
         AddSmelting(Item.Clay.id, new ItemStack(Item.Brick));
         AddSmelting(Block.Cactus.id, new ItemStack(Item.Dye, 1, 2));
         AddSmelting(Block.Log.id, new ItemStack(Item.Coal, 1, 1));
+        AddSmelting(Block.Dirt.id, new ItemStack(Block.Gravel));
     }
 
     public void AddSmelting(int inputId, ItemStack output)
