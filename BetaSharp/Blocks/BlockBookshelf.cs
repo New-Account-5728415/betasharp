@@ -16,6 +16,6 @@ public class BlockBookshelf : Block
 
     public override int getDroppedItemCount(JavaRandom random)
     {
-        return 0;
+        return 1;
     }
 }
