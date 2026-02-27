@@ -136,8 +136,8 @@ public class BlockEntityFurnace : BlockEntity, IInventory
 
     public override void tick()
     {
-        bool wasBurning = burnTime > 0;
-        bool stateChanged = false;
+        int wasBurning = burnTime > 0 ? 1 : 0;
+        int stateChanged = 0;
         if (burnTime > 0)
         {
             --burnTime;
@@ -150,10 +150,17 @@ public class BlockEntityFurnace : BlockEntity, IInventory
                 fuelTime = burnTime = getFuelTime(inventory[1]);
                 if (burnTime > 0)
                 {
-                    stateChanged = true;
+                    stateChanged = 1;
                     if (inventory[1] != null)
                     {
-                        --inventory[1].count;
+                        if (inventory[1].getItem().id == Item.LavaBucket.id)
+                        {
+                            inventory[1] = new ItemStack(Item.Bucket);
+                        }
+                        else
+                        {
+                            --inventory[1].count;
+                        }
                         if (inventory[1].count == 0)
                         {
                             inventory[1] = null;
@@ -169,7 +176,7 @@ public class BlockEntityFurnace : BlockEntity, IInventory
                 {
                     cookTime = 0;
                     craftRecipe();
-                    stateChanged = true;
+                    stateChanged = 1;
                 }
             }
             else
@@ -177,14 +184,14 @@ public class BlockEntityFurnace : BlockEntity, IInventory
                 cookTime = 0;
             }
 
-            if (wasBurning != burnTime > 0)
+            if (wasBurning != (burnTime > 0 ? 1 : 0))
             {
-                stateChanged = true;
+                stateChanged = 1;
                 BlockFurnace.updateLitState(burnTime > 0, World, X, Y, Z);
             }
         }
 
-        if (stateChanged)
+        if (stateChanged != 1)
         {
             markDirty();
         }
@@ -200,7 +207,7 @@ public class BlockEntityFurnace : BlockEntity, IInventory
         else
         {
             ItemStack outputStack = SmeltingRecipeManager.getInstance().Craft(inventory[0].getItem().id);
-            return outputStack == null ? false : inventory[2] == null ? true : !inventory[2].isItemEqual(outputStack) ? false : inventory[2].count < getMaxCountPerStack() && inventory[2].count < inventory[2].getMaxCount() ? true : inventory[2].count < outputStack.getMaxCount();
+            return outputStack == null ? false : inventory[1] != null && inventory[1].getItem().id == Item.LavaBucket.id && inventory[1].count > 1 ? false : inventory[2] == null ? true : !inventory[2].isItemEqual(outputStack) ? false : inventory[2].count < getMaxCountPerStack() && inventory[2].count < inventory[2].getMaxCount() ? true : inventory[2].count < outputStack.getMaxCount();
         }
     }
 
