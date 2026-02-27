@@ -8,16 +8,16 @@ public class NetherCaveCarver : Carver
 
     protected void CarveNetherCavesInChunk(int chunkX, int chunkZ, byte[] blocks, double x, double y, double z)
     {
-        CarveNetherCaves(chunkX, chunkZ, blocks, x, y, z, 1.0F + rand.NextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
+        CarveNetherCaves(chunkX, chunkZ, blocks, x, y, z, 1.0F + rand.NextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D, new(rand.NextLong()));
     }
 
-    protected void CarveNetherCaves(int chunkX, int chunkZ, byte[] blocks, double x, double y, double z, float var10, float var11, float var12, int var13, int var14, double var15)
+    protected void CarveNetherCaves(int chunkX, int chunkZ, byte[] blocks, double x, double y, double z, float var10, float var11, float var12, int var13, int var14, double var15, JavaRandom var23)
     {
         double var17 = chunkX * 16 + 8;
         double var19 = chunkZ * 16 + 8;
         float var21 = 0.0F;
         float var22 = 0.0F;
-        JavaRandom var23 = new(rand.NextLong());
+        
         if (var14 <= 0)
         {
             int var24 = radius * 16 - 16;
@@ -31,7 +31,7 @@ public class NetherCaveCarver : Carver
             var51 = true;
         }
 
-        int var25 = var23.NextInt(var14 / 2) + var14 / 4;
+        int var25 = var13 < var14 / 4 * 3 ? var13 + var23.NextInt((var14 - var13) / 2) + (var14 - var13) / 4 : -1;
 
         for (bool var26 = var23.NextInt(6) == 0; var13 < var14; ++var13)
         {
@@ -59,8 +59,8 @@ public class NetherCaveCarver : Carver
             var21 += (var23.NextFloat() - var23.NextFloat()) * var23.NextFloat() * 4.0F;
             if (!var51 && var13 == var25 && var10 > 1.0F)
             {
-                CarveNetherCaves(chunkX, chunkZ, blocks, x, y, z, var23.NextFloat() * 0.5F + 0.5F, var11 - (float)Math.PI * 0.5F, var12 / 3.0F, var13, var14, 1.0D);
-                CarveNetherCaves(chunkX, chunkZ, blocks, x, y, z, var23.NextFloat() * 0.5F + 0.5F, var11 + (float)Math.PI * 0.5F, var12 / 3.0F, var13, var14, 1.0D);
+                CarveNetherCaves(chunkX, chunkZ, blocks, x, y, z, var23.NextFloat() * 0.5F + 0.5F, var11 - (float)Math.PI * 0.5F, var12 / 3.0F, var13, var14, 1.0D, new(rand.NextLong()));
+                CarveNetherCaves(chunkX, chunkZ, blocks, x, y, z, var23.NextFloat() * 0.5F + 0.5F, var11 + (float)Math.PI * 0.5F, var12 / 3.0F, var13, var14, 1.0D, new(rand.NextLong()));
                 return;
             }
 
@@ -70,7 +70,7 @@ public class NetherCaveCarver : Carver
                 double var35 = z - var19;
                 double var37 = var14 - var13;
                 double var39 = (double)(var10 + 2.0F + 16.0F);
-                if (var33 * var33 + var35 * var35 - var37 * var37 > var39 * var39)
+                if (var33 * var33 + var35 * var35 > (var37 + var39) * (var37 + var39))
                 {
                     return;
                 }
@@ -204,7 +204,7 @@ public class NetherCaveCarver : Carver
                 float var17 = rand.NextFloat() * (float)Math.PI * 2.0F;
                 float var18 = (rand.NextFloat() - 0.5F) * 2.0F / 8.0F;
                 float var19 = rand.NextFloat() * 2.0F + rand.NextFloat();
-                CarveNetherCaves(centerChunkX, centerChunkZ, blocks, randX, randY, randZ, var19 * 2.0F, var17, var18, 0, 0, 0.5D);
+                CarveNetherCaves(centerChunkX, centerChunkZ, blocks, randX, randY, randZ, var19 * 2.0F, var17, var18, 0, 0, 0.5D, new(rand.NextLong()));
             }
         }
 

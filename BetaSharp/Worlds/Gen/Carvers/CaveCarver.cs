@@ -8,16 +8,16 @@ public class CaveCarver : Carver
 
     protected void CarveCavesInChunk(int chunkX, int chunkZ, byte[] blocks, double offsetX, double offsetY, double offsetZ)
     {
-        CarveCaves(chunkX, chunkZ, blocks, offsetX, offsetY, offsetZ, 1.0F + rand.NextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D);
+        CarveCaves(chunkX, chunkZ, blocks, offsetX, offsetY, offsetZ, 1.0F + rand.NextFloat() * 6.0F, 0.0F, 0.0F, -1, -1, 0.5D, new(rand.NextLong()));
     }
 
-    protected void CarveCaves(int chunkX, int chunkZ, byte[] blocks, double offsetX, double offsetY, double offsetZ, float tunnelRadius, float var11, float carvePitch, int tunnelStep, int tunnelLength, double var15)
+    protected void CarveCaves(int chunkX, int chunkZ, byte[] blocks, double offsetX, double offsetY, double offsetZ, float tunnelRadius, float var11, float carvePitch, int tunnelStep, int tunnelLength, double var15, JavaRandom caveRand)
     {
         double chunkCenterX = chunkX * 16 + 8;
         double chunkCenterZ = chunkZ * 16 + 8;
         float var21 = 0.0F;
         float var22 = 0.0F;
-        JavaRandom caveRand = new(rand.NextLong());
+        
         if (tunnelLength <= 0)
         {
             int var24 = radius * 16 - 16;
@@ -31,7 +31,7 @@ public class CaveCarver : Carver
             var52 = true;
         }
 
-        int var25 = caveRand.NextInt(tunnelLength / 2) + tunnelLength / 4;
+        int var25 = tunnelStep < tunnelLength / 4 * 3 ? tunnelStep + caveRand.NextInt((tunnelLength - tunnelStep) / 2) + (tunnelLength - tunnelStep) / 4 : -1;
 
         for (bool var26 = caveRand.NextInt(6) == 0; tunnelStep < tunnelLength; ++tunnelStep)
         {
@@ -59,8 +59,8 @@ public class CaveCarver : Carver
             var21 += (caveRand.NextFloat() - caveRand.NextFloat()) * caveRand.NextFloat() * 4.0F;
             if (!var52 && tunnelStep == var25 && tunnelRadius > 1.0F)
             {
-                CarveCaves(chunkX, chunkZ, blocks, offsetX, offsetY, offsetZ, caveRand.NextFloat() * 0.5F + 0.5F, var11 - (float)Math.PI * 0.5F, carvePitch / 3.0F, tunnelStep, tunnelLength, 1.0D);
-                CarveCaves(chunkX, chunkZ, blocks, offsetX, offsetY, offsetZ, caveRand.NextFloat() * 0.5F + 0.5F, var11 + (float)Math.PI * 0.5F, carvePitch / 3.0F, tunnelStep, tunnelLength, 1.0D);
+                CarveCaves(chunkX, chunkZ, blocks, offsetX, offsetY, offsetZ, caveRand.NextFloat() * 0.5F + 0.5F, var11 - (float)Math.PI * 0.5F, carvePitch / 3.0F, tunnelStep, tunnelLength, 1.0D, new(rand.NextLong()));
+                CarveCaves(chunkX, chunkZ, blocks, offsetX, offsetY, offsetZ, caveRand.NextFloat() * 0.5F + 0.5F, var11 + (float)Math.PI * 0.5F, carvePitch / 3.0F, tunnelStep, tunnelLength, 1.0D, new(rand.NextLong()));
                 return;
             }
 
@@ -70,7 +70,7 @@ public class CaveCarver : Carver
                 double var35 = offsetZ - chunkCenterZ;
                 double var37 = tunnelLength - tunnelStep;
                 double var39 = (double)(tunnelRadius + 2.0F + 16.0F);
-                if (var33 * var33 + var35 * var35 - var37 * var37 > var39 * var39)
+                if (var33 * var33 + var35 * var35 > (var37 + var39) * (var37 + var39))
                 {
                     return;
                 }
@@ -220,7 +220,7 @@ public class CaveCarver : Carver
                 float chunkCenterX = rand.NextFloat() * (float)Math.PI * 2.0F;
                 float var18 = (rand.NextFloat() - 0.5F) * 2.0F / 8.0F;
                 float chunkCenterZ = rand.NextFloat() * 2.0F + rand.NextFloat();
-                CarveCaves(centerChunkX, centerChunkZ, blocks, var9, var11, tunnelStep, chunkCenterZ, chunkCenterX, var18, 0, 0, 1.0D);
+                CarveCaves(centerChunkX, centerChunkZ, blocks, var9, var11, tunnelStep, chunkCenterZ, chunkCenterX, var18, 0, 0, 1.0D, new(rand.NextLong()));
             }
         }
 
