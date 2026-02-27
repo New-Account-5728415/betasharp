@@ -87,16 +87,7 @@ public class EntityBoat : Entity
                     passenger.setVehicle(this);
                 }
 
-                int i;
-                for (i = 0; i < 3; ++i)
-                {
-                    dropItem(Block.Planks.id, 1, 0.0F);
-                }
-
-                for (i = 0; i < 2; ++i)
-                {
-                    dropItem(Item.Stick.id, 1, 0.0F);
-                }
+                dropItem(Item.Boat.id, 1, 0.0F);
 
                 markDead();
             }
@@ -215,7 +206,6 @@ public class EntityBoat : Entity
                 velocityY *= (double)0.95F;
                 velocityZ *= (double)0.99F;
             }
-
         }
         else
         {
@@ -296,30 +286,9 @@ public class EntityBoat : Entity
                 }
             }
 
-            if (horizontalCollison && var6 > 0.15D)
-            {
-                if (!world.isRemote)
-                {
-                    markDead();
-
-                    int j;
-                    for (j = 0; j < 3; ++j)
-                    {
-                        dropItem(Block.Planks.id, 1, 0.0F);
-                    }
-
-                    for (j = 0; j < 2; ++j)
-                    {
-                        dropItem(Item.Stick.id, 1, 0.0F);
-                    }
-                }
-            }
-            else
-            {
                 velocityX *= (double)0.99F;
                 velocityY *= (double)0.95F;
                 velocityZ *= (double)0.99F;
-            }
 
             pitch = 0.0F;
             var8 = (double)yaw;
@@ -419,6 +388,10 @@ public class EntityBoat : Entity
             if (!world.isRemote)
             {
                 player.setVehicle(this);
+                if (player.setVehicle == null)
+                {
+                    player.setPosition(x, y + 180.0D, z);
+                }
             }
 
             return true;
