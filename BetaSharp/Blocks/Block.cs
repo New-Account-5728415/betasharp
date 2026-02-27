@@ -79,7 +79,7 @@ public class Block
     public static readonly Block TNT = new BlockTNT(46, 8).setHardness(0.0F).setSoundGroup(SoundGrassFootstep).setBlockName("tnt");
     public static readonly Block Bookshelf = new BlockBookshelf(47, 35).setHardness(1.5F).setSoundGroup(SoundWoodFootstep).setBlockName("bookshelf");
     public static readonly Block MossyCobblestone = new Block(48, 36, Material.Stone).setHardness(2.0F).setResistance(10.0F).setSoundGroup(SoundStoneFootstep).setBlockName("stoneMoss");
-    public static readonly Block Obsidian = new BlockObsidian(49, 37).setHardness(10.0F).setResistance(2000.0F).setSoundGroup(SoundStoneFootstep).setBlockName("obsidian");
+    public static readonly Block Obsidian = new BlockObsidian(49, 37).setHardness(5.0F).setResistance(2000.0F).setSoundGroup(SoundStoneFootstep).setBlockName("obsidian");
     public static readonly Block Torch = new BlockTorch(50, 80).setHardness(0.0F).setLuminance(15.0F / 16.0F).setSoundGroup(SoundWoodFootstep).setBlockName("torch").ignoreMetaUpdates();
     public static readonly Block Fire = (BlockFire)new BlockFire(51, 31).setHardness(0.0F).setLuminance(1.0F).setSoundGroup(SoundWoodFootstep).setBlockName("fire").disableStats().ignoreMetaUpdates();
     public static readonly Block Spawner = new BlockMobSpawner(52, 65).setHardness(5.0F).setSoundGroup(SoundMetalFootstep).setBlockName("mobSpawner").disableStats();
