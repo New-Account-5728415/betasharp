@@ -435,7 +435,7 @@ public class Chunk
         if (entity != null && entity.isRemoved())
         {
             BlockEntities.Remove(pos);
-            return null;
+            //return null;
         }
 
         return entity;
