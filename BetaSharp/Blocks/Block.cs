@@ -57,8 +57,8 @@ public class Block
     public static readonly Block Sandstone = new BlockSandStone(24).setSoundGroup(SoundStoneFootstep).setHardness(0.8F).setBlockName("sandStone");
     public static readonly Block Noteblock = new BlockNote(25).setHardness(0.8F).setSoundGroup(SoundWoodFootstep).setBlockName("musicBlock").ignoreMetaUpdates();
     public static readonly Block Bed = new BlockBed(26).setHardness(0.2F).setBlockName("bed").disableStats().ignoreMetaUpdates();
-    public static readonly Block PoweredRail = new BlockRail(27, 179, true).setHardness(0.7F).setSoundGroup(SoundMetalFootstep).setBlockName("goldenRail").ignoreMetaUpdates();
-    public static readonly Block DetectorRail = new BlockDetectorRail(28, 195).setHardness(0.7F).setSoundGroup(SoundMetalFootstep).setBlockName("detectorRail").ignoreMetaUpdates();
+    public static readonly Block PoweredRail = new BlockRail(27, 179, true).setHardness(0.25F).setSoundGroup(SoundMetalFootstep).setBlockName("goldenRail").ignoreMetaUpdates();
+    public static readonly Block DetectorRail = new BlockDetectorRail(28, 195).setHardness(0.25F).setSoundGroup(SoundMetalFootstep).setBlockName("detectorRail").ignoreMetaUpdates();
     public static readonly Block StickyPiston = new BlockPistonBase(29, 106, true).setBlockName("pistonStickyBase").ignoreMetaUpdates();
     public static readonly Block Cobweb = new BlockWeb(30, 11).setOpacity(1).setHardness(4.0F).setBlockName("web");
     public static readonly BlockTallGrass Grass = (BlockTallGrass)new BlockTallGrass(31, 39).setHardness(0.0F).setSoundGroup(SoundGrassFootstep).setBlockName("tallgrass");
@@ -96,7 +96,7 @@ public class Block
     public static readonly Block Sign = new BlockSign(63, typeof(BlockEntitySign), true).setHardness(1.0F).setSoundGroup(SoundWoodFootstep).setBlockName("sign").disableStats().ignoreMetaUpdates();
     public static readonly Block Door = new BlockDoor(64, Material.Wood).setHardness(3.0F).setSoundGroup(SoundWoodFootstep).setBlockName("doorWood").disableStats().ignoreMetaUpdates();
     public static readonly Block Ladder = new BlockLadder(65, 83).setHardness(0.4F).setSoundGroup(SoundWoodFootstep).setBlockName("ladder").ignoreMetaUpdates();
-    public static readonly Block Rail = new BlockRail(66, 128, false).setHardness(0.7F).setSoundGroup(SoundMetalFootstep).setBlockName("rail").ignoreMetaUpdates();
+    public static readonly Block Rail = new BlockRail(66, 128, false).setHardness(0.25F).setSoundGroup(SoundMetalFootstep).setBlockName("rail").ignoreMetaUpdates();
     public static readonly Block CobblestoneStairs = new BlockStairs(67, Cobblestone).setBlockName("stairsStone").ignoreMetaUpdates();
     public static readonly Block WallSign = new BlockSign(68, typeof(BlockEntitySign), false).setHardness(1.0F).setSoundGroup(SoundWoodFootstep).setBlockName("sign").disableStats().ignoreMetaUpdates();
     public static readonly Block Lever = new BlockLever(69, 96).setHardness(0.5F).setSoundGroup(SoundWoodFootstep).setBlockName("lever").ignoreMetaUpdates();
