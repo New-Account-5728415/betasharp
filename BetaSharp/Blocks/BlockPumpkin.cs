@@ -51,11 +51,11 @@ public class BlockPumpkin : Block
         base.onPlaced(world, x, y, z);
     }
 
-    public override bool canPlaceAt(World world, int x, int y, int z)
-    {
-        int blockId = world.getBlockId(x, y, z);
-        return (blockId == 0 || Block.Blocks[blockId].material.IsReplaceable) && world.shouldSuffocate(x, y - 1, z);
-    }
+    //public override bool canPlaceAt(World world, int x, int y, int z)
+    //{
+    //    int blockId = world.getBlockId(x, y, z);
+    //    return (blockId == 0 || Block.Blocks[blockId].material.IsReplaceable) && world.shouldSuffocate(x, y - 1, z);
+    //}
 
     public override void onPlaced(World world, int x, int y, int z, EntityLiving placer)
     {
