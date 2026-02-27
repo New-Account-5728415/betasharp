@@ -11,7 +11,7 @@ public class ItemSign : Item
 
     public ItemSign(int id) : base(id)
     {
-        maxCount = 1;
+        maxCount = 8;
     }
 
     public override bool useOnBlock(ItemStack itemStack, EntityPlayer entityPlayer, World world, int x, int y, int z, int meta)

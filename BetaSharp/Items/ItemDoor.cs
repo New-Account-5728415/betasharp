@@ -14,7 +14,7 @@ public class ItemDoor : Item
     public ItemDoor(int id, Material material) : base(id)
     {
         doorMaterial = material;
-        maxCount = 1;
+        maxCount = 8;
     }
 
     public override bool useOnBlock(ItemStack itemStack, EntityPlayer entityPlayer, World world, int x, int y, int z, int meta)
@@ -43,8 +43,8 @@ public class ItemDoor : Item
             else
             {
                 int direction = MathHelper.Floor((double)((entityPlayer.yaw + 180.0F) * 4.0F / 360.0F) - 0.5D) & 3;
-                sbyte offsetX = 0;
-                sbyte offsetZ = 0;
+                int offsetX = 0;
+                int offsetZ = 0;
                 if (direction == 0)
                 {
                     offsetZ = 1;
@@ -67,19 +67,19 @@ public class ItemDoor : Item
 
                 int solidBlocksLeft = (world.shouldSuffocate(x - offsetX, y, z - offsetZ) ? 1 : 0) + (world.shouldSuffocate(x - offsetX, y + 1, z - offsetZ) ? 1 : 0);
                 int solidBlocksRight = (world.shouldSuffocate(x + offsetX, y, z + offsetZ) ? 1 : 0) + (world.shouldSuffocate(x + offsetX, y + 1, z + offsetZ) ? 1 : 0);
-                bool hasDoorOnLeft = world.getBlockId(x - offsetX, y, z - offsetZ) == block.id || world.getBlockId(x - offsetX, y + 1, z - offsetZ) == block.id;
-                bool hasDoorOnRight = world.getBlockId(x + offsetX, y, z + offsetZ) == block.id || world.getBlockId(x + offsetX, y + 1, z + offsetZ) == block.id;
-                bool shouldMirror = false;
-                if (hasDoorOnLeft && !hasDoorOnRight)
+                int hasDoorOnLeft = world.getBlockId(x - offsetX, y, z - offsetZ) != block.id && world.getBlockId(x - offsetX, y + 1, z - offsetZ) != block.id ? 0 : 1;
+                int hasDoorOnRight = world.getBlockId(x + offsetX, y, z + offsetZ) != block.id && world.getBlockId(x + offsetX, y + 1, z + offsetZ) != block.id ? 0 : 1;
+                int shouldMirror = 0;
+                if (hasDoorOnLeft != 0 && hasDoorOnRight == 0)
                 {
-                    shouldMirror = true;
+                    shouldMirror = 1;
                 }
                 else if (solidBlocksRight > solidBlocksLeft)
                 {
-                    shouldMirror = true;
+                    shouldMirror = 1;
                 }
 
-                if (shouldMirror)
+                if (shouldMirror != 0)
                 {
                     direction = direction - 1 & 3;
                     direction += 4;

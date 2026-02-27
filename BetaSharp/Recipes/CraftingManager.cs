@@ -60,7 +60,8 @@ public class CraftingManager
         AddRecipe(new ItemStack(Block.Planks, 3), ["#", '#', Block.Trapdoor]);
         AddRecipe(new ItemStack(Item.IronDoor, 1), ["##", "##", "##", '#', Item.IronIngot]);
         AddRecipe(new ItemStack(Item.IronIngot, 6), ["#", '#', Item.IronDoor]);
-        AddRecipe(new ItemStack(Item.Sign, 1), ["###", "###", " X ", '#', Block.Planks, 'X', Item.Stick]);
+        AddRecipe(new ItemStack(Item.Sign, 2), ["###", "###", " X ", '#', Block.Planks, 'X', Item.Stick]);
+        AddRecipe(new ItemStack(Block.Planks, 3), ["#", '#', Item.Sign]);
         AddRecipe(new ItemStack(Item.Cake, 1), ["AAA", "BEB", "CCC", 'A', Item.MilkBucket, 'B', Item.Sugar, 'C', Item.Wheat, 'E', Item.Egg]);
         AddRecipe(new ItemStack(Item.Sugar, 1), ["#", '#', Item.SugarCane]);
         AddRecipe(new ItemStack(Block.Planks, 4), ["#", '#', Block.Log]);

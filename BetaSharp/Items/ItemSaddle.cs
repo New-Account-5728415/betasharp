@@ -7,7 +7,7 @@ public class ItemSaddle : Item
 
     public ItemSaddle(int id) : base(id)
     {
-        maxCount = 1;
+        maxCount = 4;
     }
 
     public override void useOnEntity(ItemStack itemStack, EntityLiving entityLiving)

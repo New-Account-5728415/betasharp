@@ -11,7 +11,7 @@ public class ItemMinecart : Item
 
     public ItemMinecart(int id, int minecartType) : base(id)
     {
-        maxCount = 1;
+        maxCount = 4;
         this.minecartType = minecartType;
     }
 

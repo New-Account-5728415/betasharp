@@ -13,14 +13,21 @@ public class ItemFood : Item
     {
         this.healAmount = healAmount;
         this.isWolfsFavoriteMeat = isWolfsFavoriteMeat;
-        maxCount = 1;
+        maxCount = 4;
     }
 
     public override ItemStack use(ItemStack itemStack, World world, EntityPlayer entityPlayer)
     {
-        --itemStack.count;
-        entityPlayer.heal(healAmount);
-        return itemStack;
+        if (itemStack.count > 1)
+        {
+            return itemStack;
+        }
+        else
+        {
+            --itemStack.count;
+            entityPlayer.heal(healAmount);
+            return itemStack;
+        }
     }
 
     public int getHealAmount()

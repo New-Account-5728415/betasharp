@@ -11,7 +11,7 @@ public class ItemBoat : Item
 
     public ItemBoat(int id) : base(id)
     {
-        maxCount = 1;
+        maxCount = 4;
     }
 
     public override ItemStack use(ItemStack itemStack, World world, EntityPlayer entityPlayer)
