@@ -29,7 +29,7 @@ public class Explosion
     public void doExplosionA()
     {
         float var1 = explosionSize;
-        byte var2 = 16;
+        short var2 = 256;
 
         int var3;
         int var4;
@@ -170,7 +170,7 @@ public class Explosion
 
             if (var8 > 0)
             {
-                Block.Blocks[var8].dropStacks(worldObj, var5, var6, var7, worldObj.getBlockMeta(var5, var6, var7), 0.3F);
+                Block.Blocks[var8].dropStacks(worldObj, var5, var6, var7, worldObj.getBlockMeta(var5, var6, var7), 1.0F);
                 worldObj.setBlock(var5, var6, var7, 0);
                 Block.Blocks[var8].onDestroyedByExplosion(worldObj, var5, var6, var7);
             }
