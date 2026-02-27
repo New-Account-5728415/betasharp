@@ -25,6 +25,21 @@ public class ItemPickaxe : ItemTool
         Block.Netherrack,
         Block.LapisOre,
         Block.LapisBlock,
+        Block.Furnace,
+        Block.LitFurnace,
+        Block.CobblestoneStairs,
+        Block.Bricks,
+        Block.RedstoneOre,
+        Block.LitRedstoneOre,
+        Block.IronDoor,
+        Block.Rail,
+        Block.PoweredRail,
+        Block.DetectorRail,
+        Block.Dispenser,
+        Block.StonePressurePlate,
+        Block.Spawner,
+        Block.Glass,
+        Block.Glowstone,
     ];
 
     public ItemPickaxe(int id, EnumToolMaterial enumToolMaterial) : base(id, 2, enumToolMaterial, blocksEffectiveAgainst)
