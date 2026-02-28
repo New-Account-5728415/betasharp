@@ -40,6 +40,8 @@ public class ItemPickaxe : ItemTool
         Block.Spawner,
         Block.Glass,
         Block.Glowstone,
+        Block.Piston,
+        Block.StickyPiston,
     ];
 
     public ItemPickaxe(int id, EnumToolMaterial enumToolMaterial) : base(id, 2, enumToolMaterial, blocksEffectiveAgainst)
