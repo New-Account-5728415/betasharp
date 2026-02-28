@@ -213,9 +213,9 @@ public class WorldRenderer : IWorldAccess
 
             int var6;
             Entity var7;
-            for (var6 = 0; var6 < world.globalEntities.size(); ++var6)
+            for (var6 = 0; var6 < world.globalEntities.Count; ++var6)
             {
-                var7 = (Entity)world.globalEntities.get(var6);
+                var7 = world.globalEntities[var6];
                 ++countEntitiesRendered;
                 if (var7.shouldRender(var1))
                 {
@@ -355,7 +355,7 @@ public class WorldRenderer : IWorldAccess
 
                 for (int var20 = 0; var20 <= var19; ++var20)
                 {
-                    var14 = var20 * (float)java.lang.Math.PI * 2.0F / var19;
+                    var14 = var20 * (float)Math.PI * 2.0F / var19;
                     float var15 = MathHelper.Sin(var14);
                     float var16 = MathHelper.Cos(var14);
                     var17.addVertex((double)(var15 * 120.0F), (double)(var16 * 120.0F), (double)(-var16 * 40.0F * var18[3]));
