@@ -6,7 +6,7 @@
 ![Issues](https://img.shields.io/github/issues/Fazin85/betasharp)
 ![Pull requests](https://img.shields.io/github/issues-pr/Fazin85/betasharp)
 
-An enhanced version of Minecraft Beta 1.7.3, ported to C#.
+An enhanced version of BetaSharp with some small additions and changes.
 
 # Notice
 
