@@ -13,7 +13,7 @@ internal class BlockGlowstone : Block
 
     public override int getDroppedItemCount(JavaRandom random)
     {
-        return 2 + random.NextInt(3);
+        return 3 + random.NextInt(2);
     }
 
     public override int getDroppedItemId(int blockMeta, JavaRandom random)
