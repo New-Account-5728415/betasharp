@@ -112,8 +112,8 @@ internal class CraftingManager
         AddRecipe(new ItemStack(Item.Stick, 1), ["#", '#', Block.Sapling]);
         AddRecipe(new ItemStack(Block.Gravel, 3), ["CF", "FC", 'C', Block.Cobblestone, 'F', Item.Flint]);
         AddRecipe(new ItemStack(Block.Gravel, 3), ["FC", "CF", 'C', Block.Cobblestone, 'F', Item.Flint]);
-        AddRecipe(new ItemStack(Block.Dirt, 1), ["S", "RGB", "S", 'S', Item.Seeds, 'G', Block.Gravel, 'R', Block.RedMushroom, 'B', Block.BrownMushroom]);
-        AddRecipe(new ItemStack(Block.Dirt, 1), ["S", "BGR", "S", 'S', Item.Seeds, 'G', Block.Gravel, 'R', Block.RedMushroom, 'B', Block.BrownMushroom]);
+        //AddRecipe(new ItemStack(Block.Dirt, 1), ["S", "RGB", "S", 'S', Item.Seeds, 'G', Block.Gravel, 'R', Block.RedMushroom, 'B', Block.BrownMushroom]);
+        //AddRecipe(new ItemStack(Block.Dirt, 1), ["S", "BGR", "S", 'S', Item.Seeds, 'G', Block.Gravel, 'R', Block.RedMushroom, 'B', Block.BrownMushroom]);
         Recipes.Sort(new RecipeSorter());
         _logger.LogInformation($"{Recipes.Count} recipes");
     }
