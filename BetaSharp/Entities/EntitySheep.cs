@@ -125,10 +125,11 @@ public class EntitySheep : EntityAnimal
 
     }
 
-    public static int getRandomFleeceColor(JavaRandom random) // TODO: Use WeightedRandomSelector
+    public static int getRandomFleeceColor(JavaRandom random)
     {
-        int roll = random.NextInt(100);
-        return roll;
-        //return roll < 5 ? 15 : (roll < 10 ? 7 : (roll < 15 ? 8 : (roll < 18 ? 12 : (random.NextInt(500) == 0 ? 6 : 0))));
+        // 0 white, 1 orange, 2 magenta, 15 black
+        int roll = random.NextInt(63);
+        // all - dark gray - light gray - brown - black 
+        return roll <= 15 ? roll : (roll <= 19 ? 7 : (roll <= 23 ? 8 : (roll <= 26 ? 12 : (roll <= 29 ? 15 : 0))));
     }
 }
