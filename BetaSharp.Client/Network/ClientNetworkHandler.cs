@@ -73,7 +73,7 @@ public class ClientNetworkHandler : NetHandler
 
             if (ticks++ - lastKeepAliveTime > 200)
             {
-                SendPacket(new KeepAlivePacket());
+                SendPacket(KeepAlivePacket.Get());
             }
         }
 
@@ -711,7 +711,7 @@ public class ClientNetworkHandler : NetHandler
             else
             {
                 screenHandler.onAcknowledgementDenied(packet.actionType);
-                addToSendQueue(new ScreenHandlerAcknowledgementPacket(packet.syncId, packet.actionType, true));
+                addToSendQueue(ScreenHandlerAcknowledgementPacket.Get(packet.syncId, packet.actionType, true));
             }
         }
 
@@ -837,7 +837,7 @@ public class ClientNetworkHandler : NetHandler
         if (packet.type == PlayerConnectionUpdateS2CPacket.ConnectionUpdateType.Leave)
         {
             Entity ent = worldClient.GetEntity(packet.entityId);
-            EntityRenderDispatcher.instance.skinManager?.Release(ent?.skinUrl);
+            EntityRenderDispatcher.instance.skinManager?.Release(packet.name);
         }
     }
 
