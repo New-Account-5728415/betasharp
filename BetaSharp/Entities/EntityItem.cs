@@ -84,7 +84,7 @@ public class EntityItem : Entity
         }
 
         ++itemAge;
-        if (itemAge >= 6000)
+        if (itemAge >= 12000)
         {
             markDead();
         }
