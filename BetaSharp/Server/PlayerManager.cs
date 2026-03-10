@@ -300,6 +300,7 @@ public class PlayerManager
             ServerPlayerEntity var3 = players[var2];
             var3.networkHandler.sendPacket(packet);
         }
+        packet.Return();
     }
 
     public void sendToDimension(Packet packet, int dimensionId)
@@ -312,6 +313,7 @@ public class PlayerManager
                 var4.networkHandler.sendPacket(packet);
             }
         }
+        packet.Return();
     }
 
     public string getPlayerList()
@@ -442,6 +444,7 @@ public class PlayerManager
                 }
             }
         }
+        packet.Return();
     }
 
     public void broadcast(string message)
@@ -456,6 +459,8 @@ public class PlayerManager
                 var4.networkHandler.sendPacket(chatMessagePacket);
             }
         }
+
+        chatMessagePacket.Return();
     }
 
     public bool sendPacket(string player, Packet packet)
@@ -468,6 +473,7 @@ public class PlayerManager
         }
         else
         {
+            packet.Return();
             return false;
         }
     }

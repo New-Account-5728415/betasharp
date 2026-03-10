@@ -167,6 +167,10 @@ public class EntityTracker
         {
             ent.sendToListeners(packet);
         }
+        else
+        {
+            packet.Return();
+        }
     }
 
     public void sendToAround(Entity entity, Packet packet)
@@ -174,6 +178,10 @@ public class EntityTracker
         if (entriesById.TryGetValue(entity.id, out EntityTrackerEntry ent))
         {
             ent.sendToAround(packet);
+        }
+        else
+        {
+            packet.Return();
         }
     }
 

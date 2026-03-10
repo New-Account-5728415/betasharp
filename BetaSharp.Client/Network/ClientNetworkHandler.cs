@@ -77,7 +77,6 @@ public class ClientNetworkHandler : NetHandler
             }
         }
 
-        netManager.interrupt();
     }
 
     public void SendPacket(Packet packet)
@@ -86,6 +85,10 @@ public class ClientNetworkHandler : NetHandler
         {
             netManager.sendPacket(packet);
             lastKeepAliveTime = ticks;
+        }
+        else
+        {
+            packet.Return();
         }
     }
 
@@ -432,10 +435,7 @@ public class ClientNetworkHandler : NetHandler
 
     public void addToSendQueue(Packet packet)
     {
-        if (!disconnected)
-        {
-            SendPacket(packet);
-        }
+        SendPacket(packet);
     }
 
     public override void onItemPickupAnimation(ItemPickupAnimationS2CPacket packet)
@@ -534,7 +534,6 @@ public class ClientNetworkHandler : NetHandler
     public void disconnect()
     {
         disconnected = true;
-        netManager.interrupt();
         netManager.disconnect("disconnect.closed");
     }
 

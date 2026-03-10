@@ -288,7 +288,7 @@ public class ServerPlayerEntity : EntityPlayer, ScreenHandlerListener
             handSwingTicks = -1;
             handSwinging = true;
             EntityTracker et = server.getEntityTracker(dimensionId);
-            et.sendToListeners(this, new EntityAnimationPacket(this, EntityAnimationPacket.EntityAnimation.SwingHand));
+            et.sendToListeners(this, EntityAnimationPacket.Get(this, EntityAnimationPacket.EntityAnimation.SwingHand));
         }
     }
 
@@ -299,9 +299,8 @@ public class ServerPlayerEntity : EntityPlayer, ScreenHandlerListener
         {
             EntityTracker et = server.getEntityTracker(dimensionId);
             PlayerSleepUpdateS2CPacket packet = PlayerSleepUpdateS2CPacket.Get(this, 0, x, y, z);
-            et.sendToListeners(this, packet);
+            et.sendToAround(this, packet);
             networkHandler.teleport(x, y, z, yaw, pitch);
-            networkHandler.sendPacket(packet);
         }
 
         return sleepAttemptResult;
@@ -312,7 +311,7 @@ public class ServerPlayerEntity : EntityPlayer, ScreenHandlerListener
         if (isSleeping())
         {
             EntityTracker et = server.getEntityTracker(dimensionId);
-            et.sendToAround(this, new EntityAnimationPacket(this, EntityAnimationPacket.EntityAnimation.WakeUp));
+            et.sendToAround(this, EntityAnimationPacket.Get(this, EntityAnimationPacket.EntityAnimation.WakeUp));
         }
 
         base.wakeUp(resetSleepTimer, updateSleepingPlayers, setSpawnPos);
