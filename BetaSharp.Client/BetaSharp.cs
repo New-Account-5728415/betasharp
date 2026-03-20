@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text.Json;
 using BetaSharp.Blocks;
 using BetaSharp.Client.Achievements;
+using BetaSharp.Client.Diagnostics;
 using BetaSharp.Client.DynamicTexture;
 using BetaSharp.Client.Entities;
 using BetaSharp.Client.Guis;
@@ -76,6 +77,7 @@ public partial class BetaSharp
     public bool skipRenderWorld;
     public HitResult objectMouseOver = new HitResult(HitResultType.MISS);
     public GameOptions options;
+    public bool ShowChunkBorders = false;
     public SoundManager sndManager = new();
     public MouseHelper mouseHelper;
     public TexturePacks texturePackList;
@@ -102,6 +104,7 @@ public partial class BetaSharp
     private ImGuiController imGuiController;
     public InternalServer? internalServer;
     private GLErrorHandler _glErrorHandler;
+    private readonly DebugTelemetry _debugTelemetry = new();
 
     private bool _wasLeftBumperDown;
     private bool _wasRightBumperDown;
@@ -163,6 +166,8 @@ public partial class BetaSharp
 
     public unsafe void startGame()
     {
+        Bootstrap.Initialize();
+
         InitializeTimer();
 
         int maximumWidth = Display.getDisplayMode().getWidth();
@@ -210,6 +215,14 @@ public partial class BetaSharp
             Display.getGlfw().SetWindowSizeLimits(Display.getWindowHandle(), 850, 480, maximumWidth, maximumHeight);
 
             GLManager.Init(Display.getGL()!);
+            if (GLManager.GL is LegacyGL legacyGl)
+            {
+                _debugTelemetry.CaptureSystemInfo(legacyGl);
+            }
+            else
+            {
+                _debugTelemetry.CaptureSystemInfo(null);
+            }
 
             Display.getGlfw().SwapInterval(options.VSync ? 1 : 0);
 
@@ -528,7 +541,7 @@ public partial class BetaSharp
 
             while (running)
             {
-                long frameStartNano = java.lang.System.nanoTime();
+                long frameStartNano = Stopwatch.GetTimestamp();
 
                 int startGcGen0 = GC.CollectionCount(0);
                 int startGcGen1 = GC.CollectionCount(1);
@@ -800,8 +813,9 @@ public partial class BetaSharp
                 }
                 finally
                 {
-                    long frameEndNano = java.lang.System.nanoTime();
+                    long frameEndNano = Stopwatch.GetTimestamp();
                     double thisFrameTimeMs = (frameEndNano - frameStartNano) / 1000000.0;
+                    _debugTelemetry.RecordFrameTime(thisFrameTimeMs);
 
                     if (options.DebugMode)
                     {
@@ -994,7 +1008,7 @@ public partial class BetaSharp
     {
         if (internalServer != null)
         {
-            internalServer.stop();
+            internalServer.Stop();
             while (!internalServer.stopped)
             {
                 Thread.Sleep(1);
@@ -1274,7 +1288,7 @@ public partial class BetaSharp
         Profiler.Start("ingameGUI.updateTick");
         ingameGUI.updateTick();
         Profiler.Stop("ingameGUI.updateTick");
-        gameRenderer.updateTargetedEntity(1.0F);
+        gameRenderer.UpdateTargetedEntity(1.0F);
 
         gameRenderer.tick(partialTicks);
 
@@ -1543,6 +1557,11 @@ public partial class BetaSharp
                             options.SmoothCamera = !options.SmoothCamera;
                         }
 
+                        if (Keyboard.getEventKey() == Keyboard.KEY_F7)
+                        {
+                            ShowChunkBorders = !ShowChunkBorders;
+                        }
+
                         if (Keyboard.getEventKey() == options.KeyBindInventory.keyCode)
                         {
                             displayGuiScreen(new GuiInventory(player));
@@ -1631,7 +1650,7 @@ public partial class BetaSharp
         camera = null;
         loadingScreen.printText(loadingText);
         loadingScreen.progressStage("");
-        sndManager.PlayStreaming((string)null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+        sndManager.PlayStreaming(null!, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
         world = newWorld;
         if (newWorld != null)
@@ -1778,6 +1797,16 @@ public partial class BetaSharp
         return "P: " + particleManager.getStatistics() + ". T: " + world.getEntityCount();
     }
 
+    internal DebugSystemSnapshot GetDebugSystemSnapshot()
+    {
+        return _debugTelemetry.SystemSnapshot;
+    }
+
+    internal DebugFrameStatsSnapshot GetDebugFrameStatsSnapshot()
+    {
+        return _debugTelemetry.GetFrameStatsSnapshot();
+    }
+
     public void respawn(bool ignoreSpawnPosition, int newDimensionId)
     {
         Vec3i? playerSpawnPos = null;
@@ -1906,4 +1935,3 @@ public partial class BetaSharp
         return Instance != null && Instance.options.ShowDebugInfo;
     }
 }
-
