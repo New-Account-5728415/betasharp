@@ -12,7 +12,7 @@ internal class FlatChunkGenerator : ChunkSource
     private readonly FlatGeneratorInfo _generatorInfo;
     private readonly JavaRandom _random;
 
-    private readonly LakeFeature _featureWaterLake = new(Block.Water.id);
+    //private readonly LakeFeature _featureWaterLake = new(Block.Water.id);
     private readonly LakeFeature _featureLavaLake = new(Block.Lava.id);
     private readonly DungeonFeature _featureDungeon = new();
     private readonly ClayOreFeature _featureClay = new(32);
@@ -105,18 +105,18 @@ internal class FlatChunkGenerator : ChunkSource
         int featureY;
         int featureZ;
 
-        bool hasLakes = _generatorInfo.WorldFeatures.ContainsKey("lake");
+        //bool hasLakes = _generatorInfo.WorldFeatures.ContainsKey("lake");
         bool hasLavaLakes = _generatorInfo.WorldFeatures.ContainsKey("lava_lake");
         bool hasDungeons = _generatorInfo.WorldFeatures.ContainsKey("dungeon");
         bool hasDecoration = _generatorInfo.WorldFeatures.ContainsKey("decoration");
 
-        if (hasLakes && _random.NextInt(4) == 0)
-        {
-            featureX = blockX + _random.NextInt(16) + 8;
-            featureY = _random.NextInt(128);
-            featureZ = blockZ + _random.NextInt(16) + 8;
-            _featureWaterLake.Generate(_world, _random, featureX, featureY, featureZ);
-        }
+        //if (hasLakes && _random.NextInt(4) == 0)
+        //{
+        //    featureX = blockX + _random.NextInt(16) + 8;
+        //    featureY = _random.NextInt(128);
+        //    featureZ = blockZ + _random.NextInt(16) + 8;
+        //    _featureWaterLake.Generate(_world, _random, featureX, featureY, featureZ);
+        //}
 
         if (hasLavaLakes && _random.NextInt(8) == 0)
         {

@@ -40,7 +40,7 @@ internal class OverworldChunkGenerator : ChunkSource
     private readonly BiomeSource _biomeSource;
 
     // Pre-allocated feature instances reused across every decorated chunk
-    private LakeFeature _featureWaterLake;
+    //private LakeFeature _featureWaterLake;
     private LakeFeature _featureLavaLake;
     private DungeonFeature _featureDungeon;
     private ClayOreFeature _featureClay;
@@ -106,7 +106,7 @@ internal class OverworldChunkGenerator : ChunkSource
 
     private void InitFeatures()
     {
-        _featureWaterLake = new LakeFeature(Block.Water.id);
+        //_featureWaterLake = new LakeFeature(Block.Water.id);
         _featureLavaLake = new LakeFeature(Block.Lava.id);
         _featureDungeon = new DungeonFeature();
         _featureClay = new ClayOreFeature(32);
@@ -542,13 +542,13 @@ internal class OverworldChunkGenerator : ChunkSource
         int featureZ;
 
         // Generate lakes
-        if (_random.NextInt(4) == 0)
-        {
-            featureX = blockX + _random.NextInt(16) + 8;
-            featureY = _random.NextInt(128);
-            featureZ = blockZ + _random.NextInt(16) + 8;
-            _featureWaterLake.Generate(_world, _random, featureX, featureY, featureZ);
-        }
+        //if (_random.NextInt(4) == 0)
+        //{
+        //    featureX = blockX + _random.NextInt(16) + 8;
+        //    featureY = _random.NextInt(128);
+        //    featureZ = blockZ + _random.NextInt(16) + 8;
+        //    _featureWaterLake.Generate(_world, _random, featureX, featureY, featureZ);
+        //}
 
         // Generate lava lakes
         if (_random.NextInt(8) == 0)

@@ -34,7 +34,7 @@ internal class SkyChunkGenerator : ChunkSource
     private readonly long _seed;
     private readonly BiomeSource _biomeSource;
 
-    private readonly LakeFeature _featureWaterLake = new(Block.Water.id);
+    //private readonly LakeFeature _featureWaterLake = new(Block.Water.id);
     private readonly LakeFeature _featureLavaLake = new(Block.Lava.id);
     private readonly DungeonFeature _featureDungeon = new();
     private readonly ClayOreFeature _featureClay = new(32);
@@ -317,13 +317,13 @@ internal class SkyChunkGenerator : ChunkSource
         int featureY;
         int featureZ;
 
-        if (_random.NextInt(4) == 0)
-        {
-            featureX = blockX + _random.NextInt(16) + 8;
-            featureY = _random.NextInt(128);
-            featureZ = blockZ + _random.NextInt(16) + 8;
-            _featureWaterLake.Generate(_world, _random, featureX, featureY, featureZ);
-        }
+        //if (_random.NextInt(4) == 0)
+        //{
+        //    featureX = blockX + _random.NextInt(16) + 8;
+        //    featureY = _random.NextInt(128);
+        //    featureZ = blockZ + _random.NextInt(16) + 8;
+        //    _featureWaterLake.Generate(_world, _random, featureX, featureY, featureZ);
+        //}
 
         if (_random.NextInt(8) == 0)
         {
