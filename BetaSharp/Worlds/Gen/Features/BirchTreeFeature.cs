@@ -9,7 +9,7 @@ internal class BirchTreeFeature : Feature
 
     public override bool Generate(World world, JavaRandom rand, int x, int y, int z)
     {
-        int treeHeight = rand.NextInt(3) + 5;
+        int treeHeight = rand.NextInt(3) + 6;
         bool canPlace = true;
         if (!(y >= 1 && y + treeHeight + 1 <= 128)) return false;
 
