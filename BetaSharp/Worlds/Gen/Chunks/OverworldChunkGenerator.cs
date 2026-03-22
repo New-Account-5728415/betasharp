@@ -864,13 +864,13 @@ internal class OverworldChunkGenerator : ChunkSource
         }
 
         // Generate one-block lava sources
-        for (int x = 0; x < 20; ++x)
-        {
-            featureX = blockX + _random.NextInt(16) + 8;
-            featureY = _random.NextInt(_random.NextInt(_random.NextInt(112) + 8) + 8);
-            featureZ = blockZ + _random.NextInt(16) + 8;
-            _featureLavaSpring.Generate(_world, _random, featureX, featureY, featureZ);
-        }
+        //for (int x = 0; x < 20; ++x)
+        //{
+        //    featureX = blockX + _random.NextInt(16) + 8;
+        //    featureY = _random.NextInt(_random.NextInt(_random.NextInt(112) + 8) + 8);
+        //    featureZ = blockZ + _random.NextInt(16) + 8;
+        //    _featureLavaSpring.Generate(_world, _random, featureX, featureY, featureZ);
+        //}
 
         // Place Snow in cold regions
         _temperatures = _biomeSource.GetTemperatures(_temperatures, blockX + 8, blockZ + 8, 16, 16);
