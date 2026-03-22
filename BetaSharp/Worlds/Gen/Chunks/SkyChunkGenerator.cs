@@ -354,8 +354,8 @@ internal class SkyChunkGenerator : ChunkSource
             _featureClay.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
-        for (int i = 0; i < 20; ++i)
         // Generate Dirt Veins
+        for (int i = 0; i < 10; ++i)
         {
             featureX = blockX + _random.NextInt(16);
             featureY = _random.NextInt(128);
