@@ -376,7 +376,7 @@ internal class SkyChunkGenerator : ChunkSource
         for (int i = 0; i < 20; ++i)
         {
             featureX = blockX + _random.NextInt(16);
-            featureY = _random.NextInt(128);
+            featureY = 6 + _random.NextInt(122);
             featureZ = blockZ + _random.NextInt(16);
             _featureCoal.Generate(_world, _random, featureX, featureY, featureZ);
         }
@@ -385,7 +385,7 @@ internal class SkyChunkGenerator : ChunkSource
         for (int i = 0; i < 20; ++i)
         {
             featureX = blockX + _random.NextInt(16);
-            featureY = _random.NextInt(64);
+            featureY = 6 + _random.NextInt(58);
             featureZ = blockZ + _random.NextInt(16);
             _featureIron.Generate(_world, _random, featureX, featureY, featureZ);
         }
@@ -394,7 +394,7 @@ internal class SkyChunkGenerator : ChunkSource
         for (int i = 0; i < 2; ++i)
         {
             featureX = blockX + _random.NextInt(16);
-            featureY = _random.NextInt(32);
+            featureY = 6 + _random.NextInt(26);
             featureZ = blockZ + _random.NextInt(16);
             _featureGold.Generate(_world, _random, featureX, featureY, featureZ);
         }
@@ -403,7 +403,7 @@ internal class SkyChunkGenerator : ChunkSource
         for (int i = 0; i < 8; ++i)
         {
             featureX = blockX + _random.NextInt(16);
-            featureY = _random.NextInt(16);
+            featureY = 6 + _random.NextInt(10);
             featureZ = blockZ + _random.NextInt(16);
             _featureRedstone.Generate(_world, _random, featureX, featureY, featureZ);
         }
@@ -412,7 +412,7 @@ internal class SkyChunkGenerator : ChunkSource
         for (int i = 0; i < 1; ++i)
         {
             featureX = blockX + _random.NextInt(16);
-            featureY = _random.NextInt(16);
+            featureY = 6 + _random.NextInt(10);
             featureZ = blockZ + _random.NextInt(16);
             _featureDiamond.Generate(_world, _random, featureX, featureY, featureZ);
         }
@@ -421,7 +421,7 @@ internal class SkyChunkGenerator : ChunkSource
         for (int i = 0; i < 1; ++i)
         {
             featureX = blockX + _random.NextInt(16);
-            featureY = _random.NextInt(16);
+            featureY = 6 + _random.NextInt(10);
             featureZ = blockZ + _random.NextInt(16);
             _featureLapis.Generate(_world, _random, featureX, featureY, featureZ);
         }
