@@ -97,16 +97,16 @@ public class Biome
     public static Biome LocateBiome(float temperature, float downfall)
     {
         downfall *= temperature;
-        if (temperature < 0.1f) return Tundra;
-        if (downfall < 0.2f)
-        {
-            if (temperature < 0.5f) return Tundra;
-            return temperature < 0.95f ? Savanna : Desert;
-        }
+        if (downfall >= 0.95f) return Rainforest;
+        if (downfall < 0.05f) return temperature < 0.5f ? IceDesert : Desert;
+        if ((downfall + (1.0f - temperature)) <= 0.2f) return Desert;
+        if (temperature < 0.1f) return IceDesert;
+        if (downfall < 0.2f) return temperature < 0.5f ? Tundra : Savanna;
         if (downfall > 0.5f && temperature < 0.7f) return Swampland;
         if (temperature < 0.5f) return Taiga;
-        if (temperature < 0.97f) return downfall < 0.35f ? Shrubland : Forest;
-        if (downfall < 0.45f) return Plains;
+        if (downfall < 0.3f) return Shrubland;
+        if (downfall < 0.4f) return Plains;
+        if (temperature < 0.97f) return Forest;
         return downfall < 0.9f ? SeasonalForest : Rainforest;
     }
 
