@@ -336,6 +336,7 @@ internal class SkyChunkGenerator : ChunkSource
             }
         }
 
+        // Generate Dungeons
         for (int i = 0; i < 8; ++i)
         {
             featureX = blockX + _random.NextInt(16) + 8;
@@ -344,6 +345,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureDungeon.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Clay Veins
         for (int i = 0; i < 10; ++i)
         {
             featureX = blockX + _random.NextInt(16);
@@ -353,6 +355,7 @@ internal class SkyChunkGenerator : ChunkSource
         }
 
         for (int i = 0; i < 20; ++i)
+        // Generate Dirt Veins
         {
             featureX = blockX + _random.NextInt(16);
             featureY = _random.NextInt(128);
@@ -360,6 +363,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureDirt.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Gravel Veins
         for (int i = 0; i < 10; ++i)
         {
             featureX = blockX + _random.NextInt(16);
@@ -368,6 +372,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureGravel.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Coal Ore Veins
         for (int i = 0; i < 20; ++i)
         {
             featureX = blockX + _random.NextInt(16);
@@ -376,6 +381,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureCoal.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Iron Ore Veins
         for (int i = 0; i < 20; ++i)
         {
             featureX = blockX + _random.NextInt(16);
@@ -384,6 +390,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureIron.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Gold Ore Veins
         for (int i = 0; i < 2; ++i)
         {
             featureX = blockX + _random.NextInt(16);
@@ -392,6 +399,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureGold.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Redstone Ore Veins
         for (int i = 0; i < 8; ++i)
         {
             featureX = blockX + _random.NextInt(16);
@@ -400,6 +408,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureRedstone.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Diamond Ore Veins
         for (int i = 0; i < 1; ++i)
         {
             featureX = blockX + _random.NextInt(16);
@@ -408,6 +417,7 @@ internal class SkyChunkGenerator : ChunkSource
             _featureDiamond.Generate(_world, _random, featureX, featureY, featureZ);
         }
 
+        // Generate Lapis Lazuli Ore Veins
         for (int i = 0; i < 1; ++i)
         {
             featureX = blockX + _random.NextInt(16);
