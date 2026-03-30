@@ -6,7 +6,7 @@
 ![Issues](https://img.shields.io/github/issues/Fazin85/betasharp)
 ![Pull requests](https://img.shields.io/github/issues-pr/Fazin85/betasharp)
 
-An enhanced version of BetaSharp with some small additions and changes.
+An modded version of BetaSharp with some small additions and changes.
 
 # Notice
 
