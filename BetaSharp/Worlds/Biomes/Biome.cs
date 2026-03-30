@@ -98,7 +98,7 @@ public class Biome
     {
         downfall *= temperature;
         if (downfall >= 0.95f) return Rainforest;
-        if (downfall < 0.05f) return temperature < 0.5f ? IceDesert : Desert;
+        if (downfall < 0.03f) return temperature < 0.5f ? IceDesert : Desert;
         if ((downfall + (1.0f - temperature)) <= 0.2f) return Desert;
         if (temperature < 0.1f) return IceDesert;
         if (downfall < 0.2f) return temperature < 0.5f ? Tundra : Savanna;
